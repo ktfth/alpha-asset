@@ -14,4 +14,14 @@ exports.Wallet = class Wallet {
       data,
     };
   }
+
+  async create(data, params) {
+    const { alphaWallet } = config;
+    const { data: walletData } = await axios.post(`${alphaWallet.url}${alphaWallet.services.wallet}`, {
+      password: data.password,
+    });
+    return {
+      data: walletData,
+    };
+  }
 };
